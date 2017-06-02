@@ -5,6 +5,7 @@ package com.ad3bay0.dev.hr.controller;
 
 import javax.validation.Valid;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -22,6 +23,8 @@ import com.ad3bay0.dev.hr.service.UserService;
  */
 @Controller
 public class LoginController {
+	
+	private static final Logger log =  Logger.getLogger(LoginController.class);
 
 	@Autowired
 	private UserService userService;
@@ -38,11 +41,15 @@ public class LoginController {
 
 	@RequestMapping(value = "/registration", method = RequestMethod.GET)
 	public ModelAndView registration() {
+		
+		log.info("registration GET");
 
 		ModelAndView modelAndView = new ModelAndView();
 		User user = new User();
 		modelAndView.addObject("user", user);
 		modelAndView.setViewName("registration");
+		
+		log.info("registration GET END");
 
 		return modelAndView;
 
@@ -51,6 +58,8 @@ public class LoginController {
 	@RequestMapping(value = "/registration", method = RequestMethod.POST)
 	public ModelAndView createNewUser(@Valid User user, BindingResult bindingResult) {
 		ModelAndView modelAndView = new ModelAndView();
+		
+		log.info("registration POST");
 
 		User userExists = userService.findUserByEmail(user.getEmail());
 
@@ -69,11 +78,11 @@ public class LoginController {
 			modelAndView.setViewName("registration");
 
 		}
-
+		log.info("registration GET POST");
 		return modelAndView;
 	}
 
-	@RequestMapping(value="/admin/home",method=RequestMethod.GET)
+	@RequestMapping(value="/secure/home",method=RequestMethod.GET)
 	public ModelAndView home() {
 		ModelAndView modelAndView = new ModelAndView();
 		
@@ -85,7 +94,7 @@ public class LoginController {
 		
 		modelAndView.addObject("adminMessage","Content Available ony for users with Admin Role");
 		
-		modelAndView.setViewName("admin/home");
+		modelAndView.setViewName("secure/home");
 
 		return modelAndView;
 

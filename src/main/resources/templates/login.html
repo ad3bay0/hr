@@ -8,7 +8,7 @@
 
 <script type="text/javascript" th:src="@{/js/jquery-3.2.1.min.js}"></script>
 
-<script type="text/javascript" src="@{/js/bootstrap.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/bootstrap.min.js}"></script>
 
 </head>
 <body>
@@ -18,6 +18,9 @@
 </form>
 
 <div class="container">
+<div class="row">
+
+<div class="col-lg-8">
 
 <img th:src="@{/images/login.jpg}" class="img-responsive center-block" width="300" height="300" alt="logo">
 <form th:action="@{/login}" method="post" class="form-signin">
@@ -30,7 +33,7 @@
 <input type="password" name="password" id="password" th:placeholder="Password" class="form-control"/>
 <br/>
 
-<div align="center" th:if="@{param.error}">
+<div align="center" th:if="${param.error}">
 
 <p style="font-size:20; color: #ff1c19;">Email or Password incorrect</p>
 
@@ -39,6 +42,13 @@
 <button class="btn btn-lg btn-primary btn-block" name="Submit" value="Login" type="submit" th:text="Login"></button>
 
 </form>
+
+</div>
+
+
+</div>
+
+
 
 
 

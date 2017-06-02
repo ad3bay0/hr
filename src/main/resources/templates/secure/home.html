@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Welcome Admin</title>
+
+<link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}"/>
+<script type="text/javascript" th:src="@{/js/bootstrap.min.js}"></script>
+</head>
+<body>
+
+<div class="container">
+<form th:action="@{/logout}" method="get">
+<button class="btn btn-md btn-danger btn-block" name="registration" type="submit">Logout</button>
+</form>
+
+<div class="panel-group" style="margin-top:40px">
+<div class="panel panel primary">
+<div class="panel-heading">
+
+<span th:utext="${userName}"></span>
+<p th:utext="@{adminMessage}"/>
+</div>
+
+</div>
+
+
+</div>
+
+
+</div>
+
+</body>
+</html>
