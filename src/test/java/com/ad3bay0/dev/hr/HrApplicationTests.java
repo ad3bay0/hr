@@ -1,4 +1,4 @@
-package com.ad3bayo.dev.hr;
+package com.ad3bay0.dev.hr;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
