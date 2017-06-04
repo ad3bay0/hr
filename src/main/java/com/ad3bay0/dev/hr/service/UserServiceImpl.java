@@ -61,9 +61,9 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
 			
-		User user = (User)entityManager.createQuery("select u from User where u.username = ?1 join fetch u.roles").setParameter(1, username).getSingleResult();
+		User user = (User)entityManager.createQuery("from User u join fetch u.roles where u.email = ?1").setParameter(1, email).getSingleResult();
 
 		List<GrantedAuthority> authorities = new ArrayList<>();
 

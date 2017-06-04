@@ -90,7 +90,7 @@ public class LoginController {
 		
 		User user = userService.findUserByEmail(auth.getName());
 		
-		modelAndView.addObject("username","Welcome "+user.getFirstName()+" "+user.getLastName());
+		modelAndView.addObject("userName","Welcome "+user.getFirstName()+" "+user.getLastName());
 		
 		modelAndView.addObject("adminMessage","Content Available ony for users with Admin Role");
 		
